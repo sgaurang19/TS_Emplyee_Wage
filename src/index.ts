@@ -26,7 +26,7 @@ class Employee{
         }
         EmpWage(): void{
             var i =0;
-
+            while(i<20 ){
             var checkfor = this.attCheck();
             switch (checkfor) {
                 case 1: //for full time
@@ -46,9 +46,12 @@ class Employee{
              
                 constants.cal = constants.cal + constants.hrs * constants.WAGEPERHR;
               
-         
+            }
+            console.log("Days: "+ i + " Hours: "+constants.totalhrs );
+            console.log("Absent Days: "+constants.AbsentDays);
             console.log("Wage is: "+ constants.cal);
         }
+        
 }
 let emp = new Employee();
 emp.welcomeMsg();
