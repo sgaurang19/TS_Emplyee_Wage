@@ -1,6 +1,10 @@
 "use strict";
 exports.__esModule = true;
 var constants_1 = require("./constants");
+var AbsentDays = 0;
+var hrs = 0;
+var cal = 0;
+var totalhrs = 10;
 var Employee = /** @class */ (function () {
     function Employee() {
         // welcome message
@@ -8,6 +12,7 @@ var Employee = /** @class */ (function () {
     }
     Employee.prototype.welcomeMsg = function () {
         console.log("|*** Welcome to Empolyee Wage Computation ***|");
+        this.EmpWage();
     };
     // For attandace check
     Employee.prototype.attCheck = function () {
@@ -16,13 +21,13 @@ var Employee = /** @class */ (function () {
     };
     // for full time work
     Employee.prototype.fullTime = function () {
-        constants_1.constants.hrs = constants_1.constants.FULL_TIME_HR;
-        return constants_1.constants.hrs;
+        hrs = constants_1.constants.FULL_TIME_HR;
+        return hrs;
     };
     // for part time work
     Employee.prototype.partTime = function () {
-        constants_1.constants.hrs = constants_1.constants.PART_TIME_HR;
-        return constants_1.constants.hrs;
+        hrs = constants_1.constants.PART_TIME_HR;
+        return hrs;
     };
     Employee.prototype.EmpWage = function () {
         var i = 0;
@@ -31,23 +36,32 @@ var Employee = /** @class */ (function () {
             switch (checkfor) {
                 case 1: //for full time
                     console.log("Day " + i + " Present For Full Time");
-                    constants_1.constants.hrs = this.fullTime();
+                    hrs = this.fullTime();
                     break;
                 case 0: //for part time
                     console.log("Day " + i + " Present For Part Time");
-                    constants_1.constants.hrs = this.partTime();
+                    hrs = this.partTime();
                     break;
                 default:
-                    constants_1.constants.hrs = 0;
+                    hrs = 0;
                     console.log("Day " + i + " Absent");
-                    constants_1.constants.AbsentDays += 1;
+                    AbsentDays += 1;
                     break;
             }
-            constants_1.constants.cal = constants_1.constants.cal + constants_1.constants.hrs * constants_1.constants.WAGEPERHR;
+            // constants.totalhrs = constants.totalhrs >= 160 ?  break : constants.totalhrs += constants.hrs;
+            if (totalhrs == 160) {
+                break;
+            }
+            else {
+                totalhrs += hrs;
+            }
+            cal = cal + hrs * constants_1.constants.WAGEPERHR;
+            i++;
+            cal = cal + hrs * constants_1.constants.WAGEPERHR;
         }
-        console.log("Days: " + i + " Hours: " + constants_1.constants.totalhrs);
-        console.log("Absent Days: " + constants_1.constants.AbsentDays);
-        console.log("Wage is: " + constants_1.constants.cal);
+        console.log("Days: " + i + "  Hours: " + totalhrs);
+        console.log("Absent Days: " + AbsentDays);
+        console.log("Wage is: " + cal);
     };
     return Employee;
 }());
