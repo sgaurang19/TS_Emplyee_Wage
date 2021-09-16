@@ -5,6 +5,7 @@ var AbsentDays = 0;
 var hrs = 0;
 var cal = 0;
 var totalhrs = 10;
+var showTotal = 0;
 var Employee = /** @class */ (function () {
     function Employee() {
         // welcome message
@@ -31,38 +32,41 @@ var Employee = /** @class */ (function () {
     };
     Employee.prototype.EmpWage = function () {
         var i = 0;
+        var wages = [];
         while (i < 20) {
             var checkfor = this.attCheck();
             switch (checkfor) {
                 case 1: //for full time
-                    console.log("Day " + i + " Present For Full Time");
+                    console.log("Day " + (i + 1) + " Present For Full Time");
                     hrs = this.fullTime();
                     break;
                 case 0: //for part time
-                    console.log("Day " + i + " Present For Part Time");
+                    console.log("Day " + (i + 1) + " Present For Part Time");
                     hrs = this.partTime();
                     break;
                 default:
                     hrs = 0;
-                    console.log("Day " + i + " Absent");
+                    console.log("Day " + (i + 1) + " Absent");
                     AbsentDays += 1;
                     break;
             }
-            console.log(totalhrs);
-            // constants.totalhrs = constants.totalhrs >= 160 ?  break : constants.totalhrs += constants.hrs;
-            if (totalhrs >= constants_1.constants.WORKING_HRS) {
+            if (totalhrs == 160) {
                 break;
             }
             else {
                 totalhrs += hrs;
-                cal = cal + hrs * constants_1.constants.WAGEPERHR;
-                i++;
-                cal = cal + hrs * constants_1.constants.WAGEPERHR;
             }
+            cal = (hrs * constants_1.constants.WAGEPERHR);
+            wages.push(cal);
+            console.log("Your Wage for Day " + (i + 1) + " is : " + wages[i]);
+            console.log("");
+            showTotal = showTotal + wages[i];
+            i++;
         }
-        console.log("Days: " + i + "  Hours: " + totalhrs);
+        console.log("Days: " + i + " Hours: " + totalhrs);
         console.log("Absent Days: " + AbsentDays);
-        console.log("Wage is: " + cal);
+        console.log("Wage is: " + wages);
+        console.log("Total Wages is :Rs. " + showTotal);
     };
     return Employee;
 }());
