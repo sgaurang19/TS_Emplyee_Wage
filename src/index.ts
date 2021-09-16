@@ -3,7 +3,9 @@ let AbsentDays: number = 0;
 let hrs : number = 0;
 let cal : number = 0;
 let totalhrs : number= 10;
-var showTotal =0;
+var showTotal: number =0;
+var total160:any = 0;
+var firstFullTime : any = 0;
 class Employee{
     constructor(){
         // welcome message
@@ -66,6 +68,16 @@ class Employee{
             
             console.log("Wage is: "+wages);
             console.log("Total Wages is :Rs. "+showTotal );
+
+            // filter function
+            total160 = wages.filter(wages =>{ return  wages == 160;});
+            console.log("Only Full Time Days: " + total160.length);
+            console.log("Total Wages is :Rs. "+ total160);
+
+
+            // find function
+            // firstFullTime = wages.find(wages =>{ return  wages == 160;});
+            // console.log("First full Time occured at actual postion: "+ (wages.indexOf(firstFullTime)+1));
         }
         
 
