@@ -9,7 +9,7 @@ class Employee{
         this.welcomeMsg()
     }
     welcomeMsg():void {
-        console.log("|*** Welcome to Empolyee Wage Computation ***|");
+        console.log("|**** Welcome to Empolyee Wage Computation ****|");
         this.EmpWage()
     }
         // For attandace check
@@ -46,18 +46,19 @@ class Employee{
                     AbsentDays += 1;
                     break;
                 }
-                
+                console.log(totalhrs)
                 // constants.totalhrs = constants.totalhrs >= 160 ?  break : constants.totalhrs += constants.hrs;
-                if(totalhrs==160){
+                if(totalhrs >= constants.WORKING_HRS){
                     break;
                 }
                 else{
                     totalhrs += hrs;
-                }
+                
                 cal = cal + hrs * constants.WAGEPERHR;
                 i++;
              
                 cal = cal + hrs * constants.WAGEPERHR;
+                }
               
             }
             console.log(`Days: ${i}  Hours: ${totalhrs}` );
@@ -65,6 +66,7 @@ class Employee{
             console.log(`Wage is: ${cal}`);
         }
         
+
 }
 let emp = new Employee();
 emp.welcomeMsg();

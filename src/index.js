@@ -11,7 +11,7 @@ var Employee = /** @class */ (function () {
         this.welcomeMsg();
     }
     Employee.prototype.welcomeMsg = function () {
-        console.log("|*** Welcome to Empolyee Wage Computation ***|");
+        console.log("|**** Welcome to Empolyee Wage Computation ****|");
         this.EmpWage();
     };
     // For attandace check
@@ -48,16 +48,17 @@ var Employee = /** @class */ (function () {
                     AbsentDays += 1;
                     break;
             }
+            console.log(totalhrs);
             // constants.totalhrs = constants.totalhrs >= 160 ?  break : constants.totalhrs += constants.hrs;
-            if (totalhrs == 160) {
+            if (totalhrs >= constants_1.constants.WORKING_HRS) {
                 break;
             }
             else {
                 totalhrs += hrs;
+                cal = cal + hrs * constants_1.constants.WAGEPERHR;
+                i++;
+                cal = cal + hrs * constants_1.constants.WAGEPERHR;
             }
-            cal = cal + hrs * constants_1.constants.WAGEPERHR;
-            i++;
-            cal = cal + hrs * constants_1.constants.WAGEPERHR;
         }
         console.log("Days: " + i + "  Hours: " + totalhrs);
         console.log("Absent Days: " + AbsentDays);
