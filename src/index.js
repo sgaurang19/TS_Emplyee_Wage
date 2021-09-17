@@ -4,8 +4,10 @@ var constants_1 = require("./constants");
 var AbsentDays = 0;
 var hrs = 0;
 var cal = 0;
-var totalhrs = 10;
+var totalhrs = 0;
 var showTotal = 0;
+var total160 = 0;
+var firstFullTime = 0;
 var Employee = /** @class */ (function () {
     function Employee() {
         // welcome message
@@ -33,6 +35,7 @@ var Employee = /** @class */ (function () {
     Employee.prototype.EmpWage = function () {
         var i = 0;
         var wages = [];
+        var allWageDetails = {};
         while (i < 20) {
             var checkfor = this.attCheck();
             switch (checkfor) {
@@ -67,6 +70,15 @@ var Employee = /** @class */ (function () {
         console.log("Absent Days: " + AbsentDays);
         console.log("Wage is: " + wages);
         console.log("Total Wages is :Rs. " + showTotal);
+        // filter function
+        total160 = wages.filter(function (wages) { return wages == 80; });
+        console.log("Only Full Time Days: " + total160.length);
+        console.log("Total Wages is :Rs. " + total160);
+        console.log("Array: " + allWageDetails);
+        // find function
+        // firstFullTime = wages.find(wages =>{ return  wages == 160;});
+        // console.log("First full Time occured at actual postion: "+ (wages.indexOf(firstFullTime)+1));
+        // allWageObject():Object {
     };
     return Employee;
 }());
