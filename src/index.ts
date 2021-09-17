@@ -2,7 +2,7 @@ import {constants} from './constants'
 let AbsentDays: number = 0;
 let hrs : number = 0;
 let cal : number = 0;
-let totalhrs : number= 10;
+let totalhrs : number= 0;
 var showTotal: number =0;
 var total160:any = 0;
 var firstFullTime : any = 0;
@@ -30,9 +30,11 @@ class Employee{
             hrs = constants.PART_TIME_HR;
             return hrs;
         }
+        
         EmpWage(): void{
             var i =0;
             let wages = [];
+            let allWageDetails = {};
             while(i<20 ){
             var checkfor = this.attCheck();
             switch (checkfor) {
@@ -61,6 +63,8 @@ class Employee{
                 console.log("Your Wage for Day "+(i+1)+" is : "+wages[i]);
                 console.log("");
                 showTotal = showTotal + wages[i];
+
+                
                 i++;
             }
             console.log("Days: "+ i + " Hours: "+totalhrs);
@@ -70,14 +74,21 @@ class Employee{
             console.log("Total Wages is :Rs. "+showTotal );
 
             // filter function
-            total160 = wages.filter(wages =>{ return  wages == 160;});
+            total160 = wages.filter(wages =>{ return  wages == 80;});
             console.log("Only Full Time Days: " + total160.length);
             console.log("Total Wages is :Rs. "+ total160);
+            
+            console.log("Array: "+ allWageDetails)
 
 
             // find function
             // firstFullTime = wages.find(wages =>{ return  wages == 160;});
             // console.log("First full Time occured at actual postion: "+ (wages.indexOf(firstFullTime)+1));
+            // allWageObject():Object {
+                
+               
+              
+        
         }
         
 
