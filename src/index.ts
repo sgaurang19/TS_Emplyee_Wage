@@ -6,6 +6,7 @@ let totalhrs : number= 0;
 var showTotal: number =0;
 var total160:any = 0;
 var firstFullTime : any = 0;
+let first: any = 0;
 class Employee{
     constructor(){
         // welcome message
@@ -30,10 +31,16 @@ class Employee{
             hrs = constants.PART_TIME_HR;
             return hrs;
         }
+        firstFullTimeWage(wages: Array<number>):number{
+           
+        //    first =  wages.find(function(wages1)
+        //    { return  wages1 == 160;});
+         return 1;
+        }
         
         EmpWage(): void{
             var i =0;
-            let wages = [];
+            let wages :Array<number> = [];
             let allWageDetails = {};
             while(i<20 ){
             var checkfor = this.attCheck();
@@ -82,8 +89,8 @@ class Employee{
 
 
             // find function
-            // firstFullTime = wages.find(wages =>{ return  wages == 160;});
-            // console.log("First full Time occured at actual postion: "+ (wages.indexOf(firstFullTime)+1));
+            firstFullTime = this.firstFullTimeWage(wages);
+            console.log("First full Time occured at actual postion: "+ (wages.indexOf(firstFullTime)+1));
             // allWageObject():Object {
                 
                
@@ -93,5 +100,56 @@ class Employee{
         
 
 }
+
+// extend class
+let id1:number;
+let name1 : string;
+let salary1: number;
+const EmployeePayrollData = class {
+    constructor(id:number, name:string, salary:number) {
+        id1 = id;
+        name1 = name;
+        salary1 = salary;
+    }
+
+    eId():number {
+        return id1
+    }
+    eName():string {
+        return name1;
+    }
+    eSalary():number {
+        return salary1;
+    }
+};
+
+
+let gender1:string;
+let startDate1:string;
+class NewEmployeePayrollData extends EmployeePayrollData {
+    // constructor(id=0, name='User', salary=0, gender='female', startDate='10 Aug 2021') {
+    constructor(id:number,name:string,salary:number, gender:string, startdate:string) {
+        super(id,name,salary);
+        gender1 = gender;
+        startDate1 = startdate;
+    }
+
+    geteGender():string {
+        return gender1;
+    }
+    geteStartDate(): string {
+        return startDate1;
+    }
+
+  
+};
+
+const newObj = new NewEmployeePayrollData(1, 'New Employee', 1600, 'male', '20 Jul 2021');
+
+console.log('New Employee details:');
+console.log(`Name: ${newObj.eName()}, ID: ${newObj.eId()}, Salary: ${newObj.eSalary()}, Gender: ${newObj.geteGender()}, Start date: ${newObj.geteStartDate()}`);
+
+// end
+
 let emp = new Employee();
-emp.welcomeMsg();
+

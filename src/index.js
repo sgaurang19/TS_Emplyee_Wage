@@ -1,4 +1,19 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 exports.__esModule = true;
 var constants_1 = require("./constants");
 var AbsentDays = 0;
@@ -8,6 +23,7 @@ var totalhrs = 0;
 var showTotal = 0;
 var total160 = 0;
 var firstFullTime = 0;
+var first = 0;
 var Employee = /** @class */ (function () {
     function Employee() {
         // welcome message
@@ -31,6 +47,11 @@ var Employee = /** @class */ (function () {
     Employee.prototype.partTime = function () {
         hrs = constants_1.constants.PART_TIME_HR;
         return hrs;
+    };
+    Employee.prototype.firstFullTimeWage = function (wages) {
+        //    first =  wages.find(function(wages1)
+        //    { return  wages1 == 160;});
+        return 1;
     };
     Employee.prototype.EmpWage = function () {
         var i = 0;
@@ -76,11 +97,55 @@ var Employee = /** @class */ (function () {
         console.log("Total Wages is :Rs. " + total160);
         console.log("Array: " + allWageDetails);
         // find function
-        // firstFullTime = wages.find(wages =>{ return  wages == 160;});
-        // console.log("First full Time occured at actual postion: "+ (wages.indexOf(firstFullTime)+1));
+        firstFullTime = this.firstFullTimeWage(wages);
+        console.log("First full Time occured at actual postion: " + (wages.indexOf(firstFullTime) + 1));
         // allWageObject():Object {
     };
     return Employee;
 }());
+// extend class
+var id1;
+var name1;
+var salary1;
+var EmployeePayrollData = /** @class */ (function () {
+    function class_1(id, name, salary) {
+        id1 = id;
+        name1 = name;
+        salary1 = salary;
+    }
+    class_1.prototype.eId = function () {
+        return id1;
+    };
+    class_1.prototype.eName = function () {
+        return name1;
+    };
+    class_1.prototype.eSalary = function () {
+        return salary1;
+    };
+    return class_1;
+}());
+var gender1;
+var startDate1;
+var NewEmployeePayrollData = /** @class */ (function (_super) {
+    __extends(NewEmployeePayrollData, _super);
+    // constructor(id=0, name='User', salary=0, gender='female', startDate='10 Aug 2021') {
+    function NewEmployeePayrollData(id, name, salary, gender, startdate) {
+        var _this = _super.call(this, id, name, salary) || this;
+        gender1 = gender;
+        startDate1 = startdate;
+        return _this;
+    }
+    NewEmployeePayrollData.prototype.geteGender = function () {
+        return gender1;
+    };
+    NewEmployeePayrollData.prototype.geteStartDate = function () {
+        return startDate1;
+    };
+    return NewEmployeePayrollData;
+}(EmployeePayrollData));
+;
+var newObj = new NewEmployeePayrollData(1, 'New Employee', 1600, 'male', '20 Jul 2021');
+console.log('New Employee details:');
+console.log("Name: " + newObj.eName() + ", ID: " + newObj.eId() + ", Salary: " + newObj.eSalary() + ", Gender: " + newObj.geteGender() + ", Start date: " + newObj.geteStartDate());
+// end
 var emp = new Employee();
-emp.welcomeMsg();
