@@ -33,18 +33,22 @@ class Employee{
         }
         firstFullTimeWage(wages: Array<number>):number{
            
-        //    first =  wages.find(function(wages1)
-        //    { return  wages1 == 160;});
-         return 1;
+           first =  wages.find(function(wages1)
+           { return  wages1 == 80;});
+           
+         return first;
         }
         
         EmpWage(): void{
             var i =0;
             let wages :Array<number> = [];
-            let allWageDetails = {};
+            let wagesArray : any= [];
+            // let allWageDetails = {};
             while(i<20 ){
             var checkfor = this.attCheck();
+            console.log("");
             switch (checkfor) {
+                
                 case 1: //for full time
                     console.log("Day "+(i+1)+ " Present For Full Time")
                     hrs = this.fullTime();
@@ -68,13 +72,22 @@ class Employee{
                 cal = (hrs * constants.WAGEPERHR);
                 wages.push(cal);
                 console.log("Your Wage for Day "+(i+1)+" is : "+wages[i]);
-                console.log("");
-                showTotal = showTotal + wages[i];
-
                 
+                showTotal = showTotal + wages[i];
+                let obj : {
+                    Day: number,
+                    WorkHR : number,
+                    Wage: number
+                } = {
+                    Day: i+1,
+                    WorkHR: hrs,
+                    Wage: cal
+                }
+                console.log(obj)
+                wagesArray.push(obj);
                 i++;
             }
-            console.log("Days: "+ i + " Hours: "+totalhrs);
+            console.log("\n\n Days: "+ i + " Hours: "+totalhrs);
             console.log("Absent Days: "+AbsentDays);
             
             console.log("Wage is: "+wages);
@@ -85,7 +98,7 @@ class Employee{
             console.log("Only Full Time Days: " + total160.length);
             console.log("Total Wages is :Rs. "+ total160);
             
-            console.log("Array: "+ allWageDetails)
+            // console.log("Array of object: "+ wagesArray)
 
 
             // find function
