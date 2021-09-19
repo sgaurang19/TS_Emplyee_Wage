@@ -7,6 +7,8 @@ var showTotal: number =0;
 var total160:any = 0;
 var firstFullTime : any = 0;
 let first: any = 0;
+let wagesMap;
+
 class Employee{
     constructor(){
         // welcome message
@@ -105,7 +107,14 @@ class Employee{
             firstFullTime = this.firstFullTimeWage(wages);
             console.log("First full Time occured at actual postion: "+ (wages.indexOf(firstFullTime)+1));
             // allWageObject():Object {
-                
+            
+            // map array 
+
+            wagesMap = wages.map((id, val)=>{
+                return {key:id+1, 
+                    value:val}
+            });
+            // console.log("mapped:\n" + wagesMap);
                
               
         
@@ -124,7 +133,16 @@ const EmployeePayrollData = class {
         name1 = name;
         salary1 = salary;
     }
-
+    CheckRegaxExp(name: string):void{
+        var regexName = /^[a-zA-Z ]{2,30}$/;
+        var result = (regexName.test(name) == true)? console.log("Valid name"): console.log("Invalid name");
+        
+        // if(result == true){
+        //     console.log()
+        // }else{
+        //   console.log("Enter Valid name")
+        // }
+    }
     eId():number {
         return id1
     }
@@ -146,6 +164,7 @@ class NewEmployeePayrollData extends EmployeePayrollData {
         gender1 = gender;
         startDate1 = startdate;
     }
+    checkRegax():void{}
 
     geteGender():string {
         return gender1;
@@ -163,6 +182,7 @@ console.log('New Employee details:');
 console.log(`Name: ${newObj.eName()}, ID: ${newObj.eId()}, Salary: ${newObj.eSalary()}, Gender: ${newObj.geteGender()}, Start date: ${newObj.geteStartDate()}`);
 
 // end
+newObj.CheckRegaxExp("Gaurang");
 
 let emp = new Employee();
 

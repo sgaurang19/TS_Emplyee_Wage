@@ -24,6 +24,7 @@ var showTotal = 0;
 var total160 = 0;
 var firstFullTime = 0;
 var first = 0;
+var wagesMap;
 var Employee = /** @class */ (function () {
     function Employee() {
         // welcome message
@@ -107,6 +108,12 @@ var Employee = /** @class */ (function () {
         firstFullTime = this.firstFullTimeWage(wages);
         console.log("First full Time occured at actual postion: " + (wages.indexOf(firstFullTime) + 1));
         // allWageObject():Object {
+        // map array 
+        wagesMap = wages.map(function (id, val) {
+            return { key: id + 1,
+                value: val };
+        });
+        // console.log("mapped:\n" + wagesMap);
     };
     return Employee;
 }());
@@ -120,6 +127,15 @@ var EmployeePayrollData = /** @class */ (function () {
         name1 = name;
         salary1 = salary;
     }
+    class_1.prototype.CheckRegaxExp = function (name) {
+        var regexName = /^[a-zA-Z ]{2,30}$/;
+        var result = (regexName.test(name) == true) ? console.log("Valid name") : console.log("Invalid name");
+        // if(result == true){
+        //     console.log()
+        // }else{
+        //   console.log("Enter Valid name")
+        // }
+    };
     class_1.prototype.eId = function () {
         return id1;
     };
@@ -142,6 +158,7 @@ var NewEmployeePayrollData = /** @class */ (function (_super) {
         startDate1 = startdate;
         return _this;
     }
+    NewEmployeePayrollData.prototype.checkRegax = function () { };
     NewEmployeePayrollData.prototype.geteGender = function () {
         return gender1;
     };
@@ -155,4 +172,5 @@ var newObj = new NewEmployeePayrollData(1, 'New Employee', 1600, 'male', '20 Jul
 console.log('New Employee details:');
 console.log("Name: " + newObj.eName() + ", ID: " + newObj.eId() + ", Salary: " + newObj.eSalary() + ", Gender: " + newObj.geteGender() + ", Start date: " + newObj.geteStartDate());
 // end
+newObj.CheckRegaxExp("Gaurang");
 var emp = new Employee();
